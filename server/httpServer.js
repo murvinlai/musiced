@@ -1,3 +1,6 @@
+/*
+ * Simple web server
+ */
 var express = require('express');
 
 /* handle uncaught exception */
