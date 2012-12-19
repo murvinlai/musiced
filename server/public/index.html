@@ -3,121 +3,30 @@
 	<head>
 		<title>Music Education</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="/js/music.js"></script>
 		<link href="/css/base.css" rel="stylesheet" type="text/css" />
 	</head>
 	
 	<body> 
-		<script>
-			var myMusic = null;
-			var custList = [];
-			var currIndex = -1;
-			
-			var config = {
-				duration: 8.3
-
-			}
-			
-			function musicInit() {
-				myMusic.paused;
-			}
-				
-			function setCustList() {
-				custList = [];
-				for (var i=1; i<=5; i++) {
-					if ( document.getElementById('m_'+i).checked) {
-						custList.push({pid:i, length:8.3, start:(i-1)*8.3, end:(i-1)*8.3+8.3});
-					}
-				} 
-			}	
-			
-			
-			function playCustList() {
-				if (custList.length > 0) {
-					playNext();
-				}
-			}
-			
-			var checkInt = false;	
-			function playCust() {
-				currIndex = -1;
-				if (checkInt != false) {
-					clearInterval(checkInt);
-				}
-				setCustList();
-				playCustList();
-				checkInt = setInterval( checkEnded, 60);
-			}	
-			
-			function checkEnded() {
-				if (myMusic.ended) {
-					playNext();
-				}
-				
-			}
-			
-			function playNext() {
-				if (currIndex == -1) {	
-					currIndex = 0;
-				} else {
-					currIndex++;
-					
-					if (currIndex >= custList.length){
-						currIndex = 0;
-					}
-				}
-				
-				var current = custList[currIndex];
-				myMusic.src = '/video/'+current.pid + ".mp4";
-				myMusic.play();
-				$('#title').html("M"+current.pid);
-				/*
-				myMusic.onended = function(){
-					alert('ended??');
-				}
-				myMusic.onplay = function(){
-					alert('endedposy?');
-				}
-				*/
-			}
-				
-			
-			$(document).ready(function() {
-				myMusic = document.getElementById('myMusic');
-				
-				/*
-				myMusic.onended = function(){
-					alert('ended??');
-				}
-				myMusic.onplay = function(){
-					alert('endedposy?');
-				}
-				*/
-				//myMusic.oncanplay = musicInit();
-				$('#playCust').click(playCust);
-				
-				
-			});
-			
-			
-			
-		</script>
+		
 		<div id="title"></div>
-		<video controls="controls" id="myMusic">
+		<div id="myMusic">
 			
 			Your browser does not support video tag.		
-		</video>
+		</div>
 		<hr />
 		<div id="controlArea">
 			<div id="leftArea">
 				<ul>
-					<li><input type="checkbox" id="m_1">M1</li>
-					<li><input type="checkbox" id="m_2">M2</li>
-					<li><input type="checkbox" id="m_3">M3</li>
-					<li><input type="checkbox" id="m_4">M4</li>
-					<li><input type="checkbox" id="m_5">M5</li>
+					<li><input type="checkbox" id="m_1" class="MM_PlayClass">M1</li>
+					<li><input type="checkbox" id="m_2" class="MM_PlayClass">M2</li>
+					<li><input type="checkbox" id="m_3" class="MM_PlayClass">M3</li>
+					<li><input type="checkbox" id="m_4" class="MM_PlayClass">M4</li>
+					<li><input type="checkbox" id="m_5" class="MM_PlayClass">M5</li>
 					
 				</ul>
-				<div><input type="button" id="playCust" value="Play Now!"></div>
+				<div><input type="button" id="playCust" onclick="MM.resume()" value="Play Now!"></div>
+				<div><input type="button" id="pauseCust" value="Pause" onclick="MM.pause()"></div>
 			</div>
 			<div id="rightArea"></div>
 		</div>

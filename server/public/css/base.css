@@ -1,4 +1,7 @@
 
+.Hidden {
+	display:none;
+}
 
 #controlArea{
 	width:1000px;
