@@ -16,12 +16,16 @@ var MM = {
 	},
 	
 	settings: {
+		numberOfMeasures: 5,
 		playDom:	'myMusic',
 		hiddenDom:	'hiddenDom',
 		playButtonDomId:	'playCust',
-		stopButtonDomId:	'stopPlayCust',
-		playClassId:	'PlayClass',
+		stopButtonDomId:	'pauseCust',
+		checkboxControl: 'm_checkbox_control',
+		checkboxListId:	'm_checkbox',
 		checkListPrefix:	'm_',
+		playClassId:	'PlayClass',
+		videoPrefix	: '',
 		domPrefix:	'MM_',
 	},
 	
@@ -30,6 +34,7 @@ var MM = {
 			$('body').append("<div id='"+MM.settings.hiddenDom+"' class='Hidden'></div>");
 		}
 		MM.setInitImage();
+		MM.setCheckboxControl();
 	},
 	
 	setInitImage: function(){
@@ -38,6 +43,18 @@ var MM = {
 	
 	setLoadingImage: function(){
 		$('#'+MM.settings.playDom).append('<div id="loadingImage"></div>');
+	},
+	
+	setCheckboxControl: function() {
+		if (MM.settings.checkboxControl != '') {
+			var checkBoxControl = $('#'+MM.settings.checkboxControl);
+			var html 	= "<ul id='"+MM.settings.checkboxListId+ "'>";
+			for (var i=1; i<=MM.settings.numberOfMeasures; i++) {
+				html += '<li><input type="checkbox" id="m_' + i+ '" class="MM_PlayClass">M'+i+'</li>';
+			}
+			html += '</ul>';
+			checkBoxControl.html(html);
+		}
 	},
 	
 	playFromSlider: function(start, end){
@@ -114,7 +131,7 @@ var MM = {
 		var hiddenDom = document.getElementById(MM.settings.hiddenDom);
 		var musicObj = document.createElement('video');
 		musicObj.id = temp.domId;
-		musicObj.src = '/video/'+temp.pid + ".mp4";
+		musicObj.src = '/video/'+ MM.settings.videoPrefix + temp.pid + ".mp4";
 		musicObj.height = '500';
 		musicObj.controls = 'controls';
 		musicObj.pause();
@@ -179,6 +196,8 @@ $(document).ready(function() {
 	//myMusic.oncanplay = musicInit();
 	MM.init();
 	$('.MM_PlayClass').click(MM.playCust);
+	$('#'+MM.settings.playButtonDomId).click(MM.resume);
+	$('#'+MM.settings.stopButtonDomId).click(MM.pause);
 	
 	
 });
