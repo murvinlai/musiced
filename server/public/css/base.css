@@ -3,6 +3,19 @@
 	display:none;
 }
 
+#initImage {
+	width: 667px;
+	height: 500px;
+	background:#000000;
+}
+
+#loadingImage {
+	width: 667px;
+	height: 500px;
+	background:#000 url('/images/ajax-loader.gif') no-repeat center;
+	
+}
+
 #controlArea{
 	width:1000px;
 	min-height:500px;
