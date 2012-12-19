@@ -69,4 +69,20 @@
 	border: 1px #BBB solid;
 }
 
+#m_checkbox {
+	height:150px;
+	width: 650px;
+	margin-left: -40px;
+}
+
+#m_checkbox li{
+	display:block;
+	height: 30px;
+	width: 120px;
+	margin-top: 10px;
+	margin-left: 5px;
+	border: 1px solid #EEE;
+	border-radius: 5px;
+	float: left;
+}
 
