@@ -42,7 +42,20 @@
 	            }
 	            $( this ).button( "option", options );
 	        });
-	    </script>
+            $(function() { 
+                $( "#slider-range" ).slider({ 
+                    range: true, 
+                    min: 0, 
+                    max: 10, 
+                    step: 1,
+                    animate: true,
+                    values:  [0, 1], 
+                    change: function( event, ui ) { 
+                        MM.playFromSlider( ui.values[0], ui.values[1]); 
+                    } 
+                }); 
+            }); 
+        </script>
 	</head>
 	
 	<body> 
@@ -72,8 +85,8 @@
 					</ul>
 					
 					<div id="tabs-1">
-						<!-- slider code -->
-						
+                        <!-- slider code -->
+                        <div id="slider-range"></div>
 					</div>
 					<div id="tabs-2">
 						<div id="m_checkbox_control">
