@@ -3,6 +3,7 @@
  */
 var express = require('express');
 
+var port = 80;
 /* handle uncaught exception */
 process.on('uncaughtException', function (ex) {
 	console.error(ex);
@@ -19,5 +20,5 @@ app.use(express.static(__dirname + '/public'));
 app.use(app.router);
 
 // Listen to port 
-app.listen(3000);
+app.listen(port);
 
