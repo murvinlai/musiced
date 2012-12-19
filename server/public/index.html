@@ -54,7 +54,7 @@
                         MM.playFromSlider( ui.values[0], ui.values[1]),
                     },
                     create: function(){
-                        var handle = jQuery(this).find('.ui-slider-handle');
+                        var handle = jQuery(this).find('.ui-slider-handle:first');
                         var bubble = jQuery('<div class="valuebox"></div>');
                         handle.append(bubble);
                     },
