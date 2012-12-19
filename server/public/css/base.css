@@ -3,14 +3,18 @@
 	display:none;
 }
 
+.Clr {
+	clear:both;
+}
+
 #initImage {
-	width: 667px;
+	width: 895px;
 	height: 500px;
 	background:#000000;
 }
 
 #loadingImage {
-	width: 667px;
+	width: 895px;
 	height: 500px;
 	background:#000 url('/images/ajax-loader.gif') no-repeat center;
 	
@@ -22,11 +26,47 @@
 }
  
 #leftArea {
-	width:500px;
+	width:100px;
 	float:left;
 }
 
-#rightArea {
-	width:500px;
-	float:left;
+#leftArea input[type=button] {
+	height:30px;
+	width:80px;
+	margin:5px;
+	background:#5890AD;
+	color:#FFF;
+	font-family:"Century Gothic";
+	font-weight:bold;
+	border-radius:5px;
+	cursor:pointer;
 }
+
+#rightArea {
+	width:700px;
+	height:100px;
+	float:left;
+	margin-left:10px;
+}
+
+#blackCover{
+	height: 70px;
+	width: 895px;
+	background: #000;
+	margin-top: -50px;
+}
+
+#title {
+	font-family:"Century Gothic";
+	font-size:24px;
+	font-weight:bold;
+	width:895px;
+	height:20px;
+	text-align:center;
+}
+
+.Border {
+	border: 1px #BBB solid;
+}
+
+

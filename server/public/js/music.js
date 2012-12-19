@@ -16,7 +16,7 @@ var MM = {
 	},
 	
 	settings: {
-		numberOfMeasures: 5,
+		numberOfMeasures: 20,
 		playDom:	'myMusic',
 		hiddenDom:	'hiddenDom',
 		playButtonDomId:	'playCust',
@@ -107,7 +107,7 @@ var MM = {
 		
 		if (start == undefined && end == undefined) {
 			var hiddenDom = document.getElementById(MM.settings.hiddenDom);
-			for (var i=1; i<=5; i++) {
+			for (var i=1; i<=MM.settings.numberOfMeasures; i++) {
 				if ( document.getElementById(MM.settings.checkListPrefix+i).checked) {
 					MM.setCustObj(hiddenDom, i);
 				}
@@ -133,7 +133,8 @@ var MM = {
 		musicObj.id = temp.domId;
 		musicObj.src = '/video/'+ MM.settings.videoPrefix + temp.pid + ".mp4";
 		musicObj.height = '500';
-		musicObj.controls = 'controls';
+		musicObj.preload = "auto";
+		//musicObj.controls = 'controls';
 		musicObj.pause();
 		hiddenDom.appendChild(musicObj);
 	},
@@ -143,6 +144,9 @@ var MM = {
 			MM.setLoadingImage();
 			
 			setTimeout(MM.playNext, 500);
+		} else {
+			MM.setInitImage();
+			$('#title').html("Please select from below");
 		}
 	},
 	
@@ -174,7 +178,7 @@ var MM = {
 		currentDom.play();
 		MM.currentMObj = currentDom;
 
-		$('#title').html("M"+MM.current.pid);
+		$('#title').html("Playing measure "+MM.current.pid);
 		
 	},
 	
