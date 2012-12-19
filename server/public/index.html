@@ -45,15 +45,23 @@
             $(function() { 
                 $( "#slider-range" ).slider({ 
                     range: true, 
-                    min: 0, 
-                    max: 10, 
+                    min: 1, 
+                    max: 20, 
                     step: 1,
                     animate: true,
-                    values:  [0, 1], 
+                    values:  [1, 2], 
                     change: function( event, ui ) { 
-                        MM.playFromSlider( ui.values[0], ui.values[1]); 
-                    } 
-                }); 
+                        MM.playFromSlider( ui.values[0], ui.values[1]),
+                    },
+                    create: function(){
+                        var handle = jQuery(this).find('.ui-slider-handle');
+                        var bubble = jQuery('<div class="valuebox"></div>');
+                        handle.append(bubble);
+                    },
+                    slide: function(evt, ui) {
+                        ui.handle.childNodes[0].innerHTML = ui.value;
+                    }
+                });
             }); 
         </script>
 	</head>
